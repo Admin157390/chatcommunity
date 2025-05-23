@@ -2,185 +2,172 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Community Chat</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WebChat - Community</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
     body {
+      margin: 0;
       font-family: Arial, sans-serif;
-      background: linear-gradient(to right, #667eea, #764ba2);
       height: 100vh;
       display: flex;
-      justify-content: center;
-      align-items: center;
     }
 
-    .chat-container {
-      width: 100%;
-      max-width: 400px;
-      height: 90vh;
-      background-color: #fff;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    .sidebar {
+      width: 300px;
+      background-color: #f0f0f0;
+      border-right: 1px solid #ccc;
       display: flex;
       flex-direction: column;
-      position: relative;
+    }
+
+    .sidebar-header {
+      padding: 20px;
+      background: #4caf50;
+      color: white;
+      font-weight: bold;
+    }
+
+    .chat-list {
+      flex: 1;
+      overflow-y: auto;
+    }
+
+    .chat-item {
+      padding: 15px;
+      border-bottom: 1px solid #ddd;
+      cursor: pointer;
+    }
+
+    .chat-item:hover {
+      background: #e8f5e9;
+    }
+
+    .chat-window {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      background-color: #e5ddd5;
     }
 
     .chat-header {
-      background-color: #4c4cff;
-      color: #fff;
+      background: #4caf50;
+      color: white;
       padding: 15px;
-      text-align: center;
-      font-size: 1.2rem;
+      font-weight: bold;
     }
 
-    .chat-intro {
-      background: #e8e8ff;
-      padding: 10px 15px;
-      font-size: 0.95rem;
-      color: #333;
-      text-align: center;
-      border-bottom: 1px solid #ccc;
-    }
-
-    .chat-box {
+    .messages {
       flex: 1;
       padding: 15px;
       overflow-y: auto;
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      background-color: #f5f5f5;
     }
 
-    .chat-message {
-      max-width: 75%;
+    .message {
+      background-color: white;
       padding: 10px 15px;
-      background-color: #e0e0e0;
-      border-radius: 20px;
-      align-self: flex-start;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      max-width: 60%;
     }
 
-    .chat-message.user {
-      background-color: #4c4cff;
-      color: white;
+    .message.user {
+      background-color: #dcf8c6;
       align-self: flex-end;
     }
 
-    .chat-input-area {
+    .input-area {
       display: flex;
       padding: 10px;
-      border-top: 1px solid #ddd;
-      background-color: #fafafa;
+      border-top: 1px solid #ccc;
+      background-color: white;
     }
 
-    .chat-input-area input {
+    .input-area input {
       flex: 1;
       padding: 10px;
-      border: 1px solid #ccc;
       border-radius: 20px;
+      border: 1px solid #ccc;
       outline: none;
     }
 
-    .chat-input-area button {
-      margin-left: 10px;
-      background-color: #4c4cff;
+    .input-area button {
+      background: #4caf50;
       border: none;
       color: white;
-      padding: 10px 15px;
+      padding: 10px 20px;
+      margin-left: 10px;
       border-radius: 20px;
       cursor: pointer;
-      transition: background-color 0.3s ease;
     }
 
-    .chat-input-area button:hover {
-      background-color: #3b3bff;
-    }
-
-    /* Welcome animation overlay */
     .welcome-overlay {
-      position: absolute;
+      position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(76, 76, 255, 0.9);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-      color: #fff;
+      background: rgba(76, 175, 80, 0.95);
+      color: white;
       font-size: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
       animation: fadeOut 3s forwards ease-in-out;
     }
 
     @keyframes fadeOut {
-      0% { opacity: 1; }
-      80% { opacity: 1; }
-      100% { opacity: 0; visibility: hidden; }
+      0%, 80% { opacity: 1; }
+      100% { opacity: 0; display: none; visibility: hidden; }
     }
   </style>
 </head>
 <body>
 
-<div class="chat-container">
-  <!-- Welcome Animation -->
-  <div class="welcome-overlay" id="welcomeOverlay">
-    Welcome to Our Community!
+<div class="welcome-overlay" id="welcome">
+  👋 Welcome to the Community Chat
+</div>
+
+<div class="sidebar">
+  <div class="sidebar-header">Chats</div>
+  <div class="chat-list">
+    <div class="chat-item">Malhar</div>
+    <div class="chat-item">Rohan</div>
+    <div class="chat-item">Ranveer</div>
   </div>
+</div>
 
-  <header class="chat-header">
-    Community Chat
-  </header>
-
-  <div class="chat-intro">
-    🌟 Welcome to the Empros International School community platform! Chat, share, support, and grow together. 🌟
+<div class="chat-window">
+  <div class="chat-header">Community Chat Room</div>
+  <div class="messages" id="messages">
+    <div class="message">Hi everyone 👋</div>
+    <div class="message user">Hello! Glad to join.</div>
   </div>
-
-  <div class="chat-box" id="chat-box">
-    <!-- Messages appear here -->
-  </div>
-
-  <div class="chat-input-area">
-    <input type="text" id="messageInput" placeholder="Type a message..." />
-    <button onclick="sendMessage()">Send</button>
+  <div class="input-area">
+    <input type="text" id="msgInput" placeholder="Type a message..." />
+    <button onclick="send()">Send</button>
   </div>
 </div>
 
 <script>
-  function sendMessage() {
-    const input = document.getElementById('messageInput');
-    const message = input.value.trim();
-    if (!message) return;
+  function send() {
+    const input = document.getElementById('msgInput');
+    const msg = input.value.trim();
+    if (!msg) return;
 
-    const chatBox = document.getElementById('chat-box');
+    const msgBox = document.createElement('div');
+    msgBox.classList.add('message', 'user');
+    msgBox.textContent = msg;
 
-    const userMsg = document.createElement('div');
-    userMsg.classList.add('chat-message', 'user');
-    userMsg.textContent = message;
-    chatBox.appendChild(userMsg);
+    const container = document.getElementById('messages');
+    container.appendChild(msgBox);
+    container.scrollTop = container.scrollHeight;
 
     input.value = '';
-    chatBox.scrollTop = chatBox.scrollHeight;
-
-    setTimeout(() => {
-      const botMsg = document.createElement('div');
-      botMsg.classList.add('chat-message');
-      botMsg.textContent = "📬 Thanks for your message!";
-      chatBox.appendChild(botMsg);
-      chatBox.scrollTop = chatBox.scrollHeight;
-    }, 800);
   }
 
-  // Automatically remove welcome overlay after 3s
   window.addEventListener('load', () => {
-    const overlay = document.getElementById('welcomeOverlay');
     setTimeout(() => {
-      overlay.style.display = 'none';
+      document.getElementById('welcome').style.display = 'none';
     }, 3000);
   });
 </script>
