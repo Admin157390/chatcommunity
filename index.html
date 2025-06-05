@@ -1,176 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>WebChat - Community</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      height: 100vh;
-      display: flex;
-    }
-
-    .sidebar {
-      width: 300px;
-      background-color: #f0f0f0;
-      border-right: 1px solid #ccc;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .sidebar-header {
-      padding: 20px;
-      background: #4caf50;
-      color: white;
-      font-weight: bold;
-    }
-
-    .chat-list {
-      flex: 1;
-      overflow-y: auto;
-    }
-
-    .chat-item {
-      padding: 15px;
-      border-bottom: 1px solid #ddd;
-      cursor: pointer;
-    }
-
-    .chat-item:hover {
-      background: #e8f5e9;
-    }
-
-    .chat-window {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      background-color: #e5ddd5;
-    }
-
-    .chat-header {
-      background: #4caf50;
-      color: white;
-      padding: 15px;
-      font-weight: bold;
-    }
-
-    .messages {
-      flex: 1;
-      padding: 15px;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .message {
-      background-color: white;
-      padding: 10px 15px;
-      border-radius: 10px;
-      margin-bottom: 10px;
-      max-width: 60%;
-    }
-
-    .message.user {
-      background-color: #dcf8c6;
-      align-self: flex-end;
-    }
-
-    .input-area {
-      display: flex;
-      padding: 10px;
-      border-top: 1px solid #ccc;
-      background-color: white;
-    }
-
-    .input-area input {
-      flex: 1;
-      padding: 10px;
-      border-radius: 20px;
-      border: 1px solid #ccc;
-      outline: none;
-    }
-
-    .input-area button {
-      background: #4caf50;
-      border: none;
-      color: white;
-      padding: 10px 20px;
-      margin-left: 10px;
-      border-radius: 20px;
-      cursor: pointer;
-    }
-
-    .welcome-overlay {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(76, 175, 80, 0.95);
-      color: white;
-      font-size: 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-      animation: fadeOut 3s forwards ease-in-out;
-    }
-
-    @keyframes fadeOut {
-      0%, 80% { opacity: 1; }
-      100% { opacity: 0; display: none; visibility: hidden; }
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Community Chat</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-<div class="welcome-overlay" id="welcome">
-  👋 Welcome to the Community Chat
-</div>
-
-<div class="sidebar">
-  <div class="sidebar-header">Chats</div>
-  <div class="chat-list">
-    <div class="chat-item">Malhar</div>
-    <div class="chat-item">Rohan</div>
-    <div class="chat-item">Ranveer</div>
+  <div id="loginScreen" class="screen active">
+    <div class="login-container">
+      <h1>Welcome to <span>Community Chat</span></h1>
+      <input
+        id="usernameInput"
+        type="text"
+        placeholder="Enter your username"
+        autocomplete="off"
+        autofocus
+      />
+      <p id="loginError" class="error-message"></p>
+      <button id="loginBtn" disabled>Login</button>
+    </div>
   </div>
-</div>
 
-<div class="chat-window">
-  <div class="chat-header">Community Chat Room</div>
-  <div class="messages" id="messages">
-    <div class="message">Hi everyone 👋</div>
-    <div class="message user">Hello! Glad to join.</div>
+  <div id="chatScreen" class="screen hidden">
+    <header>
+      <div id="userDisplay"></div>
+      <button id="logoutBtn" title="Logout">&times;</button>
+    </header>
+
+    <ul id="messages"></ul>
+
+    <form id="messageForm">
+      <input
+        id="messageInput"
+        type="text"
+        placeholder="Type your message..."
+        autocomplete="off"
+        disabled
+        maxlength="500"
+      />
+      <button type="submit" disabled>Send</button>
+    </form>
   </div>
-  <div class="input-area">
-    <input type="text" id="msgInput" placeholder="Type a message..." />
-    <button onclick="send()">Send</button>
-  </div>
-</div>
 
-<script>
-  function send() {
-    const input = document.getElementById('msgInput');
-    const msg = input.value.trim();
-    if (!msg) return;
-
-    const msgBox = document.createElement('div');
-    msgBox.classList.add('message', 'user');
-    msgBox.textContent = msg;
-
-    const container = document.getElementById('messages');
-    container.appendChild(msgBox);
-    container.scrollTop = container.scrollHeight;
-
-    input.value = '';
-  }
-
-  window.addEventListener('load', () => {
-    setTimeout(() => {
-      document.getElementById('welcome').style.display = 'none';
-    }, 3000);
-  });
-</script>
+  <script src="scripts.js"></script>
 
 </body>
 </html>
