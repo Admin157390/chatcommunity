@@ -1,17 +1,19 @@
-const express = require('express');
-const path = require('path');
+function showSection(id) {
+  const sections = document.querySelectorAll('section');
+  sections.forEach(sec => sec.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
 
-const app = express();
-const PORT = 3000;
-
-// Serve static files (html, css, js) from current directory
-app.use(express.static(path.join(__dirname)));
-
-// For any other routes, serve index.html (optional for SPA)
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
+// Screenshot Block (best effort for Android)
+document.addEventListener("keydown", function (e) {
+  if (e.key === "PrintScreen") {
+    e.preventDefault();
+    alert("Screenshot is disabled.");
+  }
 });
 
-app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
+document.addEventListener("keyup", function (e) {
+  if (e.key === "PrintScreen") {
+    navigator.clipboard.writeText('');
+  }
 });
