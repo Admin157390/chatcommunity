@@ -1,38 +1,48 @@
-body {
+/* style.css */
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
   font-family: 'Segoe UI', sans-serif;
-  background-color: #f4faff;
+  background: linear-gradient(to right, #f4faff, #e9f7ff);
+  color: #222;
 }
 
 .topbar {
   display: flex;
   overflow-x: auto;
-  background-color: #ffffff;
-  padding: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  padding: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: 1000;
 }
 
 .topbar button {
-  background: none;
+  background: transparent;
   border: none;
   padding: 10px 16px;
-  font-weight: bold;
+  margin-right: 6px;
+  font-weight: 600;
+  font-size: 15px;
   color: #007b7f;
+  border-radius: 6px;
+  transition: 0.3s;
   cursor: pointer;
-  white-space: nowrap;
 }
 
 .topbar button:hover {
-  color: #1abc9c;
+  background-color: #e0f7f7;
 }
 
 section {
   display: none;
   padding: 20px;
-  animation: fadeIn 0.3s ease-in-out;
+  animation: fadeIn 0.3s ease;
 }
 
 section.active {
@@ -40,20 +50,27 @@ section.active {
 }
 
 .card {
-  background-color: #ffffff;
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background: #fff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
-.join-btn {
+.join-btn, .link-button {
   background-color: #28a745;
-  color: white;
-  padding: 10px 20px;
+  color: #fff;
+  padding: 12px 20px;
+  font-size: 15px;
   border: none;
   border-radius: 8px;
   margin-top: 15px;
-  font-size: 16px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.join-btn:hover, .link-button:hover {
+  background-color: #218838;
 }
 
 .whatsapp-float {
@@ -61,14 +78,13 @@ section.active {
   bottom: 20px;
   right: 20px;
   background-color: #25d366;
-  color: white;
+  color: #fff;
   padding: 10px 16px;
-  border-radius: 25px;
+  border-radius: 30px;
   display: flex;
   align-items: center;
-  font-weight: bold;
   text-decoration: none;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
 .whatsapp-float img {
@@ -78,32 +94,37 @@ section.active {
 
 .feedback {
   list-style: none;
-  padding: 0;
+  margin-top: 10px;
 }
 
 .feedback li {
-  padding: 8px 10px;
-  margin-bottom: 10px;
   background: #e7f6ff;
+  padding: 10px;
   border-radius: 8px;
+  margin-bottom: 8px;
+  font-size: 14px;
 }
 
 .subjects {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(120px,1fr));
   gap: 12px;
   margin-top: 20px;
 }
 
 .subject-item {
-  background-color: #dfefff;
+  background: #e0f0ff;
   border-radius: 10px;
   text-align: center;
-  padding: 10px;
-  font-weight: 600;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+  padding: 12px;
+  font-weight: bold;
+  color: #333;
   text-decoration: none;
-  color: #000;
+  transition: 0.2s;
+}
+
+.subject-item:hover {
+  background: #c2e2ff;
 }
 
 table {
@@ -116,31 +137,57 @@ th, td {
   border: 1px solid #ccc;
   padding: 12px;
   text-align: center;
-  background-color: #fff;
+  background: #fff;
 }
 
 th {
   background-color: #007b7f;
-  color: white;
+  color: #fff;
 }
 
-.link-button {
-  background-color: #007bff;
-  color: white;
+/* Chat */
+.chat-box {
+  max-height: 300px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  padding: 12px;
+  background: #fafafa;
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+
+.chat-box p {
+  margin: 6px 0;
+  font-size: 14px;
+}
+
+.chat-input {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.chat-input input[type="text"] {
+  flex: 1;
   padding: 10px;
-  text-decoration: none;
-  border-radius: 6px;
-  display: inline-block;
-  margin-top: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.chat-input button {
+  padding: 10px 16px;
+  background: #007b7f;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.chat-input button:hover {
+  background: #005f5f;
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
