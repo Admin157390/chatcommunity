@@ -1,3 +1,4 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,143 +6,144 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>My Community App</title>
   <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.ably.io/lib/ably.min-1.js"></script>
 </head>
 <body oncontextmenu="return false">
 
-<div class="topbar">
-  <button onclick="showSection('community')">Community</button>
-  <button onclick="showSection('feedback')">Feedback</button>
-  <button onclick="showSection('books')">Books</button>
-  <button onclick="showSection('testpapers')">Test Papers</button>
-  <button onclick="showSection('bus')">Bus</button>
-  <button onclick="showSection('uniform')">Uniform</button>
-  <button onclick="showSection('entab')">Entab</button>
-  <button onclick="showSection('members')">Members</button>
-  <button onclick="showSection('call')">Call Group</button>
-</div>
-
-<section id="community" class="active">
-  <div class="card">
-    <h2>Join Our WhatsApp Community</h2>
-    <p><strong>Active Members:</strong> Malhar, Rohan, Ranveer</p>
-    <button class="join-btn" onclick="window.open('https://wa.me/919324961255')">Join Now</button>
+  <div class="topbar">
+    <button onclick="showSection('community')">Community</button>
+    <button onclick="showSection('feedback')">Feedback</button>
+    <button onclick="showSection('books')">Books</button>
+    <button onclick="showSection('testpapers')">Test Papers</button>
+    <button onclick="showSection('bus')">Bus</button>
+    <button onclick="showSection('uniform')">Uniform</button>
+    <button onclick="showSection('entab')">Entab</button>
+    <button onclick="showSection('members')">Members</button>
+    <button onclick="showSection('chat')">Community Chat</button>
   </div>
-</section>
 
-<section id="feedback">
-  <div class="card">
-    <h2>📝 Feedback</h2>
-    <ul class="feedback">
-      <li>Malhar: "Very useful app!"</li>
-      <li>Krishan: "Helpful for all students."</li>
-      <li>Ranveer: "Great support and features!"</li>
-      <li>Rushikesh: "Everything in one place."</li>
-      <li>Rudransh: "Very organized!"</li>
-      <li>Mithilesh: "User-friendly UI."</li>
-      <li>Soham: "Top-notch support!"</li>
-      <li>Rohan: "Nice work done bro!"</li>
-    </ul>
-  </div>
-</section>
-
-<section id="books">
-  <div class="card">
-    <h2>📚 Subjects</h2>
-    <div class="subjects">
-      <a class="subject-item" href="https://drive.google.com/file/d/1grONVcxovtksqdo2RRRjzKAHDO0sl3Ie/view">Hindi</a>
-      <a class="subject-item" href="https://drive.google.com/file/d/1gz9p_dSL75CvSFmeHnOIinqh8Z6JXjFb/view">Marathi</a>
-      <a class="subject-item" href="https://drive.google.com/file/d/1iREp9B_qQO2ZFSwEgJesXKf47msOF8X4/view">Maths</a>
-      <a class="subject-item" href="#">English</a>
-      <a class="subject-item" href="https://drive.google.com/file/d/1ib5mqI-ccFSxkWwmYzrqPb1qLMiYrYra/view">Physics</a>
-      <a class="subject-item" href="#">Chemistry</a>
-      <a class="subject-item" href="https://drive.google.com/file/d/1iRO32BjNMMSWpVog-zeNvhJb_huLWyPN/view">Biology</a>
-      <a class="subject-item" href="#">History</a>
-      <a class="subject-item" href="https://drive.google.com/file/d/1iRaTKlrHw7LyQB-z5u0AxN8VooYZYBpp/view">Economics</a>
-      <a class="subject-item" href="#">NCC</a>
-      <a class="subject-item" href="#">Computer</a>
-      <a class="subject-item" href="#">Civics</a>
-      <a class="subject-item" href="#">Geography</a>
+  <section id="community" class="active">
+    <div class="card">
+      <h2>Join Our WhatsApp Community</h2>
+      <p><strong>Active Members:</strong> Malhar, Rohan, Ranveer</p>
+      <button class="join-btn" onclick="window.open('https://wa.me/919324961255')">Join Now</button>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="testpapers">
-  <div class="card">
-    <h2>📄 Test Papers</h2>
-    <div class="subjects">
-      <a class="subject-item" href="https://drive.google.com/file/d/1i7Ekw1LV-umrrfbMWtBFVusW297g3eH2/view" target="_blank">Science</a>
-      <a class="subject-item" href="https://drive.google.com/file/d/1i44EZ2boyz3OIJU5rFyI_0b6U7ILQo_z/view" target="_blank">SST</a>
-      <a class="subject-item" href="https://drive.google.com/file/d/1i3RW_pKBjYinCcpkjOGNoWk2Shs2nt5f/view" target="_blank">Maths</a>
+  <section id="feedback">
+    <div class="card">
+      <h2>📝 Feedback</h2>
+      <ul class="feedback">
+        <li>Malhar: "Very useful app!"</li>
+        <li>Krishan: "Helpful for all students."</li>
+        <li>Ranveer: "Great support and features!"</li>
+        <li>Rushikesh: "Everything in one place."</li>
+        <li>Rudransh: "Very organized!"</li>
+        <li>Mithilesh: "User-friendly UI."</li>
+        <li>Soham: "Top-notch support!"</li>
+        <li>Rohan: "Nice work done bro!"</li>
+      </ul>
     </div>
-    <p>📥 Tap on a subject to view or download the test paper.</p>
-  </div>
-</section>
+  </section>
 
-<section id="bus">
-  <div class="card">
-    <h2>🚌 Bus Tracking App</h2>
-    <p>Track your bus with our parent app.</p>
-    <a href="https://play.google.com/store/apps/details?id=com.satcop.satcopparent" target="_blank" class="link-button">Open Bus App</a>
-  </div>
-</section>
+  <section id="books">
+    <div class="card">
+      <h2>📚 Subjects</h2>
+      <div class="subjects">
+        <a class="subject-item" href="https://drive.google.com/file/d/1grONVcxovtksqdo2RRRjzKAHDO0sl3Ie/view?usp=drivesdk">Hindi</a>
+        <a class="subject-item" href="https://drive.google.com/file/d/1gz9p_dSL75CvSFmeHnOIinqh8Z6JXjFb/view?usp=drivesdk">Marathi</a>
+        <a class="subject-item" href="https://drive.google.com/file/d/1iREp9B_qQO2ZFSwEgJesXKf47msOF8X4/view?usp=drivesdk">Maths</a>
+        <a class="subject-item" href="#">English</a>
+        <a class="subject-item" href="https://drive.google.com/file/d/1ib5mqI-ccFSxkWwmYzrqPb1qLMiYrYra/view?usp=drivesdk">Physics</a>
+        <a class="subject-item" href="#">Chemistry</a>
+        <a class="subject-item" href="https://drive.google.com/file/d/1iRO32BjNMMSWpVog-zeNvhJb_huLWyPN/view?usp=drivesdk">Biology</a>
+        <a class="subject-item" href="#">History</a>
+        <a class="subject-item" href="https://drive.google.com/file/d/1iRaTKlrHw7LyQB-z5u0AxN8VooYZYBpp/view?usp=drivesdk">Economics</a>
+        <a class="subject-item" href="#">NCC</a>
+        <a class="subject-item" href="#">Computer</a>
+        <a class="subject-item" href="#">Civics</a>
+        <a class="subject-item" href="#">Geography</a>
+      </div>
+    </div>
+  </section>
 
-<section id="uniform">
-  <div class="card">
-    <h2>👕 Uniform Schedule</h2>
-    <table>
-      <tr><th>Weekday</th><th>Uniform</th></tr>
-      <tr><td>Monday</td><td>School Uniform</td></tr>
-      <tr><td>Tuesday</td><td>House Uniform</td></tr>
-      <tr><td>Wednesday</td><td>MCF/NCC Uniform</td></tr>
-      <tr><td>Thursday</td><td>School Uniform</td></tr>
-      <tr><td>Friday</td><td>School Uniform</td></tr>
-      <tr><td>Saturday</td><td>House Uniform</td></tr>
-    </table>
-  </div>
-</section>
+  <section id="testpapers">
+    <div class="card">
+      <h2>📄 Test Papers</h2>
+      <div class="subjects">
+        <a class="subject-item" href="/science paper .pdf" target="_blank">Science</a>
+        <a class="subject-item" href="/SST test papers .pdf" target="_blank">SST</a>
+        <a class="subject-item" href="/maths exam paper .pdf" target="_blank">Maths</a>
+      </div>
+      <p>📥 Tap on a subject to view or download.</p>
+    </div>
+  </section>
 
-<section id="entab">
-  <div class="card">
-    <h2>📱 ENTAB School App</h2>
-    <p><strong>School Code:</strong> <code>EMPROS</code></p>
-    <a href="https://play.google.com/store/apps/details?id=com.entab.learninglab" target="_blank" class="link-button">Open ENTAB App</a>
-  </div>
-</section>
+  <section id="bus">
+    <div class="card">
+      <h2>🚌 Bus Tracking App</h2>
+      <p>Track your bus with our parent app.</p>
+      <a class="link-button" href="https://play.google.com/store/apps/details?id=com.satcop.satcopparent" target="_blank">Open Bus App</a>
+    </div>
+  </section>
 
-<section id="members">
-  <div class="card">
-    <h2>👥 Community Members</h2>
-    <ul>
-      <li>👑 Kartik</li>
-      <li>🔥 Malhar</li>
-      <li>⚡ Rohan</li>
-      <li>✅ Krishan</li>
-      <li>✅ Soham</li>
-      <li>✅ Ansh</li>
-      <li>✅ Rudransh</li>
-      <li>✅ Mithilesh</li>
-      <li>✅ Rishikesh Atharva</li>
-    </ul>
-  </div>
-</section>
+  <section id="uniform">
+    <div class="card">
+      <h2>👕 Uniform Schedule</h2>
+      <table>
+        <tr><th>Weekday</th><th>Uniform</th></tr>
+        <tr><td>Monday</td><td>School Uniform</td></tr>
+        <tr><td>Tuesday</td><td>House Uniform</td></tr>
+        <tr><td>Wednesday</td><td>MCF/NCC Uniform</td></tr>
+        <tr><td>Thursday</td><td>School Uniform</td></tr>
+        <tr><td>Friday</td><td>School Uniform</td></tr>
+        <tr><td>Saturday</td><td>House Uniform</td></tr>
+      </table>
+    </div>
+  </section>
 
-<section id="call">
-  <div class="card">
-    <h2>📞 Group Call</h2>
-    <p>Use this to start a video/audio meeting with everyone.</p>
-    <iframe
-      src="https://meet.jit.si/CommunityGroup123"
-      allow="camera; microphone; fullscreen; display-capture"
-      style="width: 100%; height: 500px; border: 0; border-radius: 10px;">
-    </iframe>
-  </div>
-</section>
+  <section id="entab">
+    <div class="card">
+      <h2>📱 ENTAB School App</h2>
+      <p><strong>School Code:</strong> <code>EMPROS</code></p>
+      <a class="link-button" href="https://play.google.com/store/apps/details?id=com.entab.learninglab" target="_blank">Open ENTAB App</a>
+    </div>
+  </section>
 
-<a class="whatsapp-float" href="https://wa.me/919324961255" target="_blank">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WA Icon">
-  Customer Care
-</a>
+  <section id="members">
+    <div class="card">
+      <h2>👥 Community Members</h2>
+      <ul class="feedback">
+        <li>👑 Kartik</li>
+        <li>🔥 Malhar</li>
+        <li>⚡ Rohan</li>
+        <li>✅ Krishan</li>
+        <li>✅ Soham</li>
+        <li>✅ Ansh</li>
+        <li>✅ Rudransh</li>
+        <li>✅ Mithilesh</li>
+        <li>✅ Rishikesh Atharva</li>
+      </ul>
+    </div>
+  </section>
 
-<script src="script.js"></script>
+  <section id="chat">
+    <div class="card">
+      <h2>💬 Community Chat</h2>
+      <div class="chat-box" id="chat-box"></div>
+      <div class="chat-input">
+        <input type="text" id="username" placeholder="Your name">
+        <input type="text" id="message" placeholder="Type a message...">
+        <button onclick="sendMessage()">Send</button>
+      </div>
+    </div>
+  </section>
+
+  <a class="whatsapp-float" href="https://wa.me/919324961255" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WA Icon">
+    Customer Care
+  </a>
+
+  <script src="script.js"></script>
 </body>
-                            </html>
+        </html>
